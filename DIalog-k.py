@@ -23,7 +23,7 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
-    result = req.get("queryText")
+    result = req.get("result")
     parameters = result.get("parameters")
     weapon_name = parameters.get("KOUMOKU")
 
