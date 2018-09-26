@@ -27,7 +27,7 @@ def webhook():
     parameters = result.get("parameters")
     weapon_name = parameters.get("KOUMOKU")
 
-    scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+    scope = ['https://spreadsheets.google.com/feeds']
 
     #ダウンロードしたjsonファイルを同じフォルダに格納して指定する
     credentials = ServiceAccountCredentials.from_json_keyfile_name('kiduki01-76c7e41e3eee.json', scope)
