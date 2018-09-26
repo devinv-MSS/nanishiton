@@ -26,18 +26,21 @@ def webhook():
     result = req.get("result")
     parameters = result.get("parameters")
     weapon_name = parameters.get("KOUMOKU")
+    
+    print("1111")
 
     scope = ['https://spreadsheets.google.com/feeds']
 
     #ダウンロードしたjsonファイルを同じフォルダに格納して指定する
     credentials = ServiceAccountCredentials.from_json_keyfile_name('kiduki01-76c7e41e3eee.json', scope)
+        print("2222")
     gc = gspread.authorize(credentials)
-
+    print("3333")
     # # 共有設定したスプレッドシートの名前を指定する
     worksheet = gc.open("KIDUKI").get_worksheet(1)
-
+    print("4444")
     cell = worksheet.find(weapon_name)
-
+    print("5555")
     text = str(cell.value) +"わ、"+ str(worksheet.cell(cell.row,cell.col+1).value) + "です"
     r = make_response(jsonify({'speech':text,'displayText':text}))
     r.headers['Content-Type'] = 'application/json'
